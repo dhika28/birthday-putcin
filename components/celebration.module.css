@@ -1,0 +1,161 @@
+.celebrationSection {
+  background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.celebrationContainer {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.celebrationContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.confettiCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: pulseAnimation 3s infinite alternate;
+}
+
+.celebrationTitle {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #fff, #ffd1dc, #fff);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+.celebrationName {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--white);
+}
+
+.celebrationMessage {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.heart {
+  width: 50px;
+  height: 50px;
+  background-color: var(--white);
+  position: relative;
+  transform: rotate(45deg);
+  margin: 0 auto;
+  animation: heartbeat 1.5s infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  background-color: var(--white);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -25px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: -25px;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: rotate(45deg) scale(0.8);
+  }
+  5% {
+    transform: rotate(45deg) scale(0.9);
+  }
+  10% {
+    transform: rotate(45deg) scale(0.8);
+  }
+  15% {
+    transform: rotate(45deg) scale(1);
+  }
+  50% {
+    transform: rotate(45deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(45deg) scale(0.8);
+  }
+}
+
+@keyframes pulseAnimation {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .celebrationTitle {
+    font-size: 2.5rem;
+  }
+
+  .celebrationName {
+    font-size: 1.8rem;
+  }
+
+  .celebrationMessage {
+    font-size: 1rem;
+  }
+
+  .heart {
+    width: 30px;
+    height: 30px;
+  }
+
+  .heart::before,
+  .heart::after {
+    width: 30px;
+    height: 30px;
+  }
+
+  .heart::before {
+    top: -15px;
+  }
+
+  .heart::after {
+    left: -15px;
+  }
+}

@@ -1,0 +1,111 @@
+.countdownSection {
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdownSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/placeholder.svg?height=1080&width=1920") center / cover no-repeat;
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+}
+
+.countdownContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.countdownWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.countdownWrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.countdownItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+  position: relative;
+}
+
+.countdownNumber {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+  min-width: 100px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdownNumber::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  border-radius: 10px;
+}
+
+.countdownLabel {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.countdownMessage {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .countdownWrapper {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .countdownItem {
+    min-width: 80px;
+  }
+
+  .countdownNumber {
+    font-size: 2.5rem;
+    min-width: 70px;
+    padding: 0.8rem;
+  }
+
+  .countdownLabel {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,152 @@
+:root {
+  --primary: #ff80ab;
+  --primary-light: #ffb2c9;
+  --primary-dark: #c94f79;
+  --secondary: #f8bbd0;
+  --accent: #c2185b;
+  --background: #fff9fb;
+  --text: #37474f;
+  --white: #ffffff;
+
+  --font-inter: var(--font-inter);
+  --font-playfair: var(--font-playfair);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--background);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-playfair);
+  font-weight: 700;
+}
+
+.main-container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.section {
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--accent);
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-light), var(--primary-dark));
+  border-radius: 3px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+html, body {
+  height: 100%; /* Pastikan body mengisi seluruh tinggi layar */
+  margin: 0; /* Reset margin untuk menghilangkan space */
+  padding: 0; /* Reset padding untuk menghilangkan space */
+}
+
+.layoutWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Menggunakan 100vh untuk full screen */
+}
+
+.mainContent {
+  flex: 1; /* Flex untuk membuat konten utama fleksibel */
+}
+
+.footer {
+  background-color: var(--primary); /* Ganti dengan warna footer sesuai keinginan */
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerText {
+  font-size: 16px;
+}
+
+.heartIcon {
+  color: red;
+}
+
