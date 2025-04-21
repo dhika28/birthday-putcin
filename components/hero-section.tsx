@@ -83,8 +83,10 @@ export default function HeroSection({ name, date }: HeroSectionProps) {
         loop
         muted
         playsInline
+        poster="/putcin-thumbnail.jpg"
         className={styles.videoBackground}
       >
+        <source src="/putcin.webm" type="video/webm" />
         <source src="/putcin.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
