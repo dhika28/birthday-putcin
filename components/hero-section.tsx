@@ -18,30 +18,32 @@ export default function HeroSection({ name, date }: HeroSectionProps) {
 
   useEffect(() => {
     const container = containerRef.current
-
     if (!container) return
+
+    let animationFrame: number
 
     const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX / window.innerWidth
       const y = e.clientY / window.innerHeight
 
-      // Parallax background effect
-      container.style.backgroundPosition = `${50 + x * 10}% ${50 + y * 10}%`
+      animationFrame = requestAnimationFrame(() => {
+        container.style.backgroundPosition = `${50 + x * 10}% ${50 + y * 10}%`
+      })
     }
 
     window.addEventListener("mousemove", handleMouseMove)
 
-    // Trigger initial animations
+    // Tambahkan class 'visible' ke elemen dengan .animateIn
     const elements = container.querySelectorAll(`.${styles.animateIn}`)
     elements.forEach((el, index) => {
       setTimeout(() => {
-        ;(el as HTMLElement).style.opacity = "1"
-        ;(el as HTMLElement).style.transform = "translateY(0)"
+        el.classList.add(styles.visible)
       }, 300 * index)
     })
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove)
+      cancelAnimationFrame(animationFrame)
     }
   }, [])
 
@@ -63,13 +65,10 @@ export default function HeroSection({ name, date }: HeroSectionProps) {
     }
 
     if (!isDeleting && displayText === fullText) {
-      setTimeout(() => {
-        setIsDeleting(true)
-      }, 1000)
+      setTimeout(() => setIsDeleting(true), 1000)
     } else if (isDeleting && displayText === "") {
       setIsDeleting(false)
       setLoopNum(loopNum + 1)
-      setTimeout(() => {}, 500)
     }
 
     return () => clearTimeout(timer)
@@ -87,7 +86,7 @@ export default function HeroSection({ name, date }: HeroSectionProps) {
         className={styles.videoBackground}
       >
         <source src="/putcin.webm" type="video/webm" />
-        <source src="/putcin.mp4" type="video/mp4" />
+        <source src="/putcin (1).mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -103,9 +102,6 @@ export default function HeroSection({ name, date }: HeroSectionProps) {
         </h1>
         <p className={`${styles.animateIn} ${styles.date}`}>{date}</p>
       </div>
-
-      {/* 💫 Optional particles */}
-      {/* <div className={styles.particles}></div> */}
     </div>
   )
 }
